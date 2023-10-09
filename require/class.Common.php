@@ -12,7 +12,7 @@ require_once(dirname(__FILE__).'/settings.php');
 
 class Common {
 	//protected $cookies = array();
-	
+
 	/**
 	* Get data from form result
 	* @param String $url form URL
@@ -35,8 +35,8 @@ class Common {
 		}
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-		curl_setopt($ch, CURLINFO_HEADER_OUT, true); 
-		if ($getheaders) curl_setopt($ch, CURLOPT_HEADER, 1); 
+		curl_setopt($ch, CURLINFO_HEADER_OUT, true);
+		if ($getheaders) curl_setopt($ch, CURLOPT_HEADER, 1);
 		curl_setopt($ch,CURLOPT_ENCODING , "gzip");
 		//curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.1.2) Gecko/20090729 Firefox/3.5.2 GTB5');
 //		curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (X11; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0');
@@ -45,8 +45,8 @@ class Common {
 		} else {
 			curl_setopt($ch, CURLOPT_USERAGENT, $useragent);
 		}
-		if ($timeout == '') curl_setopt($ch, CURLOPT_TIMEOUT, 10); 
-		else curl_setopt($ch, CURLOPT_TIMEOUT, $timeout); 
+		if ($timeout == '') curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+		else curl_setopt($ch, CURLOPT_TIMEOUT, $timeout);
 		//curl_setopt($ch, CURLOPT_HEADERFUNCTION, array('Common',"curlResponseHeaderCallback"));
 		if ($type == 'post') {
 			curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
@@ -100,7 +100,7 @@ class Common {
 			return $result;
 		}
 	}
-	
+
 	private function curlResponseHeaderCallback($ch, $headerLine) {
 		global $curl_cookies;
 		$curl_cookies = array();
@@ -141,7 +141,7 @@ class Common {
 	public static function gunzip($in_file,$out_file_name = '') {
 		//echo $in_file.' -> '.$out_file_name."\n";
 		$buffer_size = 4096; // read 4kb at a time
-		if ($out_file_name == '') $out_file_name = str_replace('.gz', '', $in_file); 
+		if ($out_file_name == '') $out_file_name = str_replace('.gz', '', $in_file);
 		if ($in_file != '' && file_exists($in_file)) {
 			// PHP version of Ubuntu use gzopen64 instead of gzopen
 			if (function_exists('gzopen')) $file = gzopen($in_file,'rb');
@@ -150,10 +150,10 @@ class Common {
 				echo 'gzopen not available';
 				die;
 			}
-			$out_file = fopen($out_file_name, 'wb'); 
+			$out_file = fopen($out_file_name, 'wb');
 			while(!gzeof($file)) {
 				fwrite($out_file, gzread($file, $buffer_size));
-			}  
+			}
 			fclose($out_file);
 			gzclose($file);
 		}
@@ -162,7 +162,7 @@ class Common {
 	public static function bunzip2($in_file,$out_file_name = '') {
 		//echo $in_file.' -> '.$out_file_name."\n";
 		$buffer_size = 4096; // read 4kb at a time
-		if ($out_file_name == '') $out_file_name = str_replace('.bz2', '', $in_file); 
+		if ($out_file_name == '') $out_file_name = str_replace('.bz2', '', $in_file);
 		if ($in_file != '' && file_exists($in_file)) {
 			// PHP version of Ubuntu use gzopen64 instead of gzopen
 			if (function_exists('bzopen')) $file = bzopen($in_file,'rb');
@@ -170,10 +170,10 @@ class Common {
 				echo 'bzopen not available';
 				die;
 			}
-			$out_file = fopen($out_file_name, 'wb'); 
+			$out_file = fopen($out_file_name, 'wb');
 			while(!feof($file)) {
 				fwrite($out_file, bzread($file, $buffer_size));
-			}  
+			}
 			fclose($out_file);
 			bzclose($file);
 		}
@@ -215,7 +215,7 @@ class Common {
 		unset($html);
 		return(array_filter($tabledata));
 	}
-	
+
 	/**
 	* Convert <p> part of a HTML page to an array
 	* @param String $data HTML page
@@ -293,8 +293,8 @@ class Common {
 		if ($azimuth < 0) return $azimuth+360;
 		return $azimuth;
 	}
-	
-	
+
+
 	/**
 	* Check is distance realistic
 	* @param int $timeDifference the time between the reception of both messages
@@ -333,7 +333,7 @@ class Common {
 		}
 		return $deg+(($min*60)/3600);
 	}
-	
+
 	public function convertDecLatLong($coord) {
 		//N43°36.763' W5°46.845'
 		$coords = explode(' ',$coord);
@@ -356,7 +356,7 @@ class Common {
 		}
 		return array('latitude' => round($latitude,5),'longitude' => round($longitude,5));
 	}
-	
+
 	public function convertDM($coord,$latlong) {
 		if ($latlong == 'latitude') {
 			if ($coord < 0) $NSEW = 'S';
@@ -386,7 +386,7 @@ class Common {
 		$sec = round(($coord-$min)*60);
 		return array('deg' => $deg,'min' => $min,'sec' => $sec,'NSEW' => $NSEW);
 	}
-	
+
 	/**
 	* Copy folder contents
 	* @param       string   $source    Source path
@@ -402,7 +402,7 @@ class Common {
 		}
 		return true;
 	}
-	
+
 	/**
 	* Check if an url exist
 	* @param	String $url url to check
@@ -412,7 +412,7 @@ class Common {
 		$headers=get_headers($url);
 		return stripos($headers[0],"200 OK")?true:false;
 	}
-	
+
 	/**
 	* Convert hexa to string
 	* @param	String $hex data in hexa
@@ -424,7 +424,7 @@ class Common {
 		for($i=0;$i<$hexln;$i+=2) $str .= chr(hexdec(substr($hex,$i,2)));
 		return $str;
 	}
-	
+
 	/**
 	* Convert hexa color to rgb
 	* @param	String $hex data in hexa
@@ -432,9 +432,9 @@ class Common {
 	*/
 	public function hex2rgb($hex) {
 		$hex = str_replace('#','',$hex);
-		return sscanf($hex, "%02x%02x%02x"); 
+		return sscanf($hex, "%02x%02x%02x");
 	}
-	
+
 	public function getHeading($lat1, $lon1, $lat2, $lon2) {
 		//difference in longitudinal coordinates
 		$dLon = deg2rad($lon2) - deg2rad($lon1);
@@ -461,7 +461,7 @@ class Common {
 		if ($d > -$approx && $d < $approx) return true;
 		else return false;
 	}
-	
+
 	public function array_merge_noappend() {
 		$output = array();
 		foreach(func_get_args() as $array) {
@@ -472,7 +472,7 @@ class Common {
 		}
 		return $output;
 	}
-	
+
 
 	public function arr_diff($arraya, $arrayb) {
 		foreach ($arraya as $keya => $valuea) {
@@ -505,7 +505,7 @@ class Common {
 		}
 		return false;
 	}
-	
+
 	/**
 	* Returns list of available locales
 	*
@@ -539,12 +539,12 @@ class Common {
 		$r = 6378;
 		$latitude = deg2rad($latitude);
 		$longitude = deg2rad($longitude);
-		$bearing = deg2rad($heading); 
+		$bearing = deg2rad($heading);
 		$latitude2 =  asin( (sin($latitude) * cos($distance/$r)) + (cos($latitude) * sin($distance/$r) * cos($bearing)) );
 		$longitude2 = $longitude + atan2( sin($bearing)*sin($distance/$r)*cos($latitude), cos($distance/$r)-(sin($latitude)*sin($latitude2)) );
 		return array('latitude' => number_format(rad2deg($latitude2),5,'.',''),'longitude' => number_format(rad2deg($longitude2),5,'.',''));
 	}
-	
+
 	public function getCoordfromDistanceBearing($latitude,$longitude,$bearing,$distance) {
 		// distance in meter
 		$R = 6378.14;
@@ -578,33 +578,33 @@ class Common {
 	 * From http://stackoverflow.com/questions/6073397/how-do-you-create-a-gz-file-using-php
 	 * Based on function by Kioob at:
 	 * http://www.php.net/manual/en/function.gzwrite.php#34955
-	 * 
+	 *
 	 * @param string $source Path to file that should be compressed
 	 * @param integer $level GZIP compression level (default: 9)
 	 * @return string New filename (with .gz appended) if success, or false if operation fails
 	 */
-	public function gzCompressFile($source, $level = 9){ 
-		$dest = $source . '.gz'; 
-		$mode = 'wb' . $level; 
-		$error = false; 
-		if ($fp_out = gzopen($dest, $mode)) { 
-			if ($fp_in = fopen($source,'rb')) { 
-				while (!feof($fp_in)) 
-					gzwrite($fp_out, fread($fp_in, 1024 * 512)); 
-				fclose($fp_in); 
+	public function gzCompressFile($source, $level = 9){
+		$dest = $source . '.gz';
+		$mode = 'wb' . $level;
+		$error = false;
+		if ($fp_out = gzopen($dest, $mode)) {
+			if ($fp_in = fopen($source,'rb')) {
+				while (!feof($fp_in))
+					gzwrite($fp_out, fread($fp_in, 1024 * 512));
+				fclose($fp_in);
 			} else {
-				$error = true; 
+				$error = true;
 			}
-			gzclose($fp_out); 
+			gzclose($fp_out);
 		} else {
-			$error = true; 
+			$error = true;
 		}
 		if ($error)
-			return false; 
+			return false;
 		else
-			return $dest; 
-	} 
-	
+			return $dest;
+	}
+
 	public function remove_accents($string) {
 		if ( !preg_match('/[\x80-\xff]/', $string) ) return $string;
 		$chars = array(
@@ -706,7 +706,7 @@ class Common {
 		$string = strtr($string, $chars);
 		return $string;
 	}
-	
+
 	/*
 	* Extract int from a string
 	* Come from http://php.net/manual/fr/function.intval.php comment by michiel ed thalent nl
@@ -715,7 +715,7 @@ class Common {
 	* @return Integer integer from the string
 	*/
 	public function str2int($string, $concat = false) {
-		$length = strlen($string);    
+		$length = strlen($string);
 		for ($i = 0, $int = '', $concat_flag = true; $i < $length; $i++) {
 			if (is_numeric($string[$i]) && $concat_flag) {
 				$int .= $string[$i];
@@ -725,7 +725,7 @@ class Common {
 		}
 		return (int) $int;
 	}
-	
+
 	public function create_socket($host, $port, &$errno, &$errstr) {
 		$ip = gethostbyname($host);
 		$s = socket_create(AF_INET, SOCK_STREAM, 0);
@@ -752,12 +752,32 @@ class Common {
 		socket_close($s);
 		return false;
 	}
-
-	public function getUserIP() { 
+/*
+	public function getUserIP() {
 		$client = @$_SERVER['HTTP_CLIENT_IP'];
 		$forward = @$_SERVER['HTTP_X_FORWARDED_FOR'];
-		return filter_var($client, FILTER_VALIDATE_IP) ? $client : filter_var($forward, FILTER_VALIDATE_IP) ? $forward : $_SERVER['REMOTE_ADDR']; 
+		return filter_var($client, FILTER_VALIDATE_IP) ? $client : filter_var($forward, FILTER_VALIDATE_IP) ? $forward : $_SERVER['REMOTE_ADDR'];
+	}*/
+
+	public function getUserIP() {
+    // Attempt to get the client's IP address from various sources
+    $client = @$_SERVER['HTTP_CLIENT_IP'];
+    $forward = @$_SERVER['HTTP_X_FORWARDED_FOR'];
+
+    // Validate the client IP address first
+    if (filter_var($client, FILTER_VALIDATE_IP)) {
+        return $client;
+    }
+    // If client IP is not valid, check the forwarded IP address
+    elseif (filter_var($forward, FILTER_VALIDATE_IP)) {
+        return $forward;
+    }
+    // If neither client nor forwarded IP is valid, use remote address
+    else {
+        return $_SERVER['REMOTE_ADDR'];
+    }
 	}
+
 	public function replace_mb_substr($string, $offset, $length)
 	{
 		if (!function_exists('mb_substr')) {
@@ -775,7 +795,7 @@ class Common {
 		//NOTE: use a trailing slash for folders!!!
 		//see http://bugs.php.net/bug.php?id=27609
 		//see http://bugs.php.net/bug.php?id=30931
-		if ($path{strlen($path)-1}=='/') // recursively return a temporary file path
+		if ($path[strlen($path)-1]=='/') // recursively return a temporary file path
 			return $this->is__writable($path.uniqid(mt_rand()).'.tmp');
 		else if (is_dir($path))
 			return $this->is__writable($path.'/'.uniqid(mt_rand()).'.tmp');
@@ -789,7 +809,7 @@ class Common {
 			unlink($path);
 		return true;
 	}
-	
+
 	/*
 	 * Great circle route
 	 * Translated to PHP from javascript version of https://github.com/springmeyer/arc.js
@@ -834,7 +854,7 @@ class Common {
 		$dfLeftBorderX = 180 - $dfDateLineOffset;
 		$dfRightBorderX = -180 + $dfDateLineOffset;
 		$dfDiffSpace = 360 - $dfDateLineOffset;
-		
+
 		// https://github.com/OSGeo/gdal/blob/7bfb9c452a59aac958bff0c8386b891edf8154ca/gdal/ogr/ogrgeometryfactory.cpp#L2342
 		$first_pass_ln = count($first_pass);
 		for ($j = 1; $j < $first_pass_ln; ++$j) {
@@ -842,7 +862,7 @@ class Common {
 			$dfX = $first_pass[$j][0];
 			$dfDiffLong = abs($dfX - $dfPrevX);
 			if ($dfDiffLong > $dfDiffSpace &&
-			    (($dfX > $dfLeftBorderX && $dfPrevX < $dfRightBorderX) || ($dfPrevX > $dfLeftBorderX && $dfX < $dfRightBorderX))) 
+			    (($dfX > $dfLeftBorderX && $dfPrevX < $dfRightBorderX) || ($dfPrevX > $dfLeftBorderX && $dfX < $dfRightBorderX)))
 			{
 				$bHasBigDiff = true;
 			} else if ($dfDiffLong > $dfMaxSmallDiffLong) {
