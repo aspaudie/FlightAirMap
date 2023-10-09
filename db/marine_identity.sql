@@ -1,4 +1,6 @@
-CREATE TABLE `marine_identity` (
+DROP TABLE IF EXISTS MARINE_IDENTITY;
+
+CREATE TABLE IF NOT EXISTS `marine_identity` (
   `marid` int(11) NOT NULL AUTO_INCREMENT,
   `mmsi` varchar(255) DEFAULT NULL,
   `imo` varchar(20) DEFAULT NULL,
@@ -13,4 +15,3 @@ CREATE TABLE `marine_identity` (
   `type` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`marid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-

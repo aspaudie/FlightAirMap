@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS STATS_COUNTRY;
+
 CREATE TABLE IF NOT EXISTS `stats_country` (
   `stats_country_id` int(11) NOT NULL,
   `iso2` varchar(5) NOT NULL,

@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS STATS_TRACKER_COUNTRY;
+
 CREATE TABLE IF NOT EXISTS `stats_tracker_country` (
   `stats_tracker_country_id` int(11) NOT NULL,
   `iso2` varchar(5) NOT NULL,

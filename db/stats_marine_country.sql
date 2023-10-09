@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS STATS_MARINE_COUNTRY;
+
 CREATE TABLE IF NOT EXISTS `stats_marine_country` (
   `stats_marine_country_id` int(11) NOT NULL,
   `iso2` varchar(5) NOT NULL,

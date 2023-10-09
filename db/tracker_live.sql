@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS tracker_live;
+
 CREATE TABLE `tracker_live` (
   `tracker_live_id` int(11) NOT NULL,
   `famtrackid` varchar(255) NOT NULL,

@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS STATS_CALLSIGN;
+
 CREATE TABLE IF NOT EXISTS `stats_callsign` (
   `stats_callsign_id` int(11) NOT NULL,
   `callsign_icao` varchar(10) NOT NULL,

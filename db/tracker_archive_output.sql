@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS tracker_archive_output;
+
 CREATE TABLE `tracker_archive_output` (
   `tracker_archive_output_id` int(11) NOT NULL,
   `famtrackid` varchar(255) NOT NULL,

@@ -1,4 +1,4 @@
-CREATE TABLE aircraft_block (
+CREATE TABLE IF NOT EXISTS aircraft_block (
   block_id int(11) NOT NULL AUTO_INCREMENT,
   callsign varchar(20),
   Source varchar(255),

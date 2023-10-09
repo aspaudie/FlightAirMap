@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS STATS_MARINE_TYPE;
+
 CREATE TABLE IF NOT EXISTS `stats_marine_type` (
   `stats_marine_type_id` int(11) NOT NULL,
   `type` varchar(255) NOT NULL,

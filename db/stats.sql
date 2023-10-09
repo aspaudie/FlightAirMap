@@ -1,4 +1,4 @@
-CREATE TABLE `stats` (
+CREATE TABLE IF NOT EXISTS `stats` (
   `stats_id` int(11) NOT NULL,
   `stats_type` varchar(255) NOT NULL,
   `cnt` int(11) NOT NULL,

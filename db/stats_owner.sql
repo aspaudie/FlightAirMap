@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS STATS_OWNER;
+
 CREATE TABLE `stats_owner` (
   `stats_owner_id` int(11) NOT NULL,
   `owner_name` varchar(255) NOT NULL,

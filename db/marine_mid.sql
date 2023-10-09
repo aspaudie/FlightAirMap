@@ -1,4 +1,6 @@
-CREATE TABLE `marine_mid` (
+DROP TABLE IF EXISTS MARINE_ID;
+
+CREATE TABLE IF NOT EXISTS `marine_mid` (
   `mid` int(11) DEFAULT NULL,
   `country` varchar(255) DEFAULT NULL,
   `alpha2` varchar(2) DEFAULT NULL,

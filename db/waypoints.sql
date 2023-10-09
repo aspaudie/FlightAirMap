@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS waypoints;
+
 CREATE TABLE IF NOT EXISTS `waypoints` (
   `waypoints_id` int(11) NOT NULL AUTO_INCREMENT,
   `name_begin` varchar(255),

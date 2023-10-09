@@ -1,4 +1,6 @@
-CREATE TABLE `accidents` (
+DROP TABLE IF EXISTS ACCIDENTS;
+
+CREATE TABLE IF NOT EXISTS `accidents` (
     `accidents_id` int(11) NOT NULL AUTO_INCREMENT,
     `registration` varchar(20) NOT NULL,
     `date` timestamp NOT NULL,

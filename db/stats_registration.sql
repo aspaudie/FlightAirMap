@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS stats_registration;
+
 CREATE TABLE IF NOT EXISTS `stats_registration` (
   `stats_registration_id` int(11) NOT NULL,
   `registration` varchar(10) NOT NULL,

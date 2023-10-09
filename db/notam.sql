@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS notam;
+
 CREATE TABLE IF NOT EXISTS notam (
   notam_id int(11) NOT NULL AUTO_INCREMENT,
   ref varchar(15) NOT NULL,

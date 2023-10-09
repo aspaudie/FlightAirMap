@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS translation;
+
 CREATE TABLE IF NOT EXISTS `translation` (
   `TranslationID` int(11) NOT NULL AUTO_INCREMENT,
   `Reg` varchar(20),

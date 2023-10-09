@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS STATS_SOURCE;
+
 CREATE TABLE `stats_source` (
   `stats_source_id` int(11) NOT NULL,
   `source_data` text,

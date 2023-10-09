@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS spotter_output;
+
 CREATE TABLE IF NOT EXISTS `spotter_output` (
   `spotter_id` int(11) NOT NULL AUTO_INCREMENT,
   `flightaware_id` varchar(50) NOT NULL,
@@ -21,7 +23,7 @@ CREATE TABLE IF NOT EXISTS `spotter_output` (
   `arrival_airport_country` varchar(255),
   `arrival_airport_time` varchar(20),
   `route_stop` varchar(255),
-  `date` timestamp NOT NULL DEFAULT 0,
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `latitude` float NOT NULL,
   `longitude` float NOT NULL,
   `waypoints` longtext NOT NULL,

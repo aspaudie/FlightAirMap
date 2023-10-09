@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS STATS_PILOT;
+
 CREATE TABLE `stats_pilot` (
   `stats_pilot_id` int(11) NOT NULL,
   `pilot_id` varchar(255) NOT NULL,

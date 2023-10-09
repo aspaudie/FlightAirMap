@@ -1,4 +1,6 @@
-CREATE TABLE `stats_aircraft` (
+DROP TABLE STATS_AIRCRAFT;
+
+CREATE TABLE IF NOT EXISTS `stats_aircraft` (
   `stats_aircraft_id` int(11) NOT NULL,
   `aircraft_icao` varchar(10) NOT NULL,
   `cnt` int(11) NOT NULL,

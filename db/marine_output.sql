@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS MARINE_OUTPUT;
+
 CREATE TABLE IF NOT EXISTS `marine_output` (
   `marine_id` int(11) NOT NULL AUTO_INCREMENT,
   `fammarine_id` varchar(50) NOT NULL,
@@ -14,7 +16,7 @@ CREATE TABLE IF NOT EXISTS `marine_output` (
   `arrival_port_date` timestamp NULL DEFAULT NULL,
   `status` varchar(255) DEFAULT NULL,
   `status_id` int(11) DEFAULT NULL,
-  `date` timestamp NOT NULL DEFAULT 0,
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `latitude` float NOT NULL,
   `longitude` float NOT NULL,
   `heading` int(11) NOT NULL,

@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS STATS_TRACKER_TYPE;
+
 CREATE TABLE IF NOT EXISTS `stats_tracker_type` (
   `stats_tracker_type_id` int(11) NOT NULL,
   `type` varchar(255) NOT NULL,

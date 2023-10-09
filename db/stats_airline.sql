@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS stats_airline;
+
 CREATE TABLE `stats_airline` (
   `stats_airline_id` int(11) NOT NULL,
   `airline_icao` varchar(10) NOT NULL,
